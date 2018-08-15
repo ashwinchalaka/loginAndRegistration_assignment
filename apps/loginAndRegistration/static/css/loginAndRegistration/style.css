@@ -1,0 +1,18 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    /* border: 1px solid red; */
+}
+h1 {
+    margin: 20px;
+}
+form {
+    margin: 20px 40px;
+}
+ul {
+    margin: 20px;
+}
+li {
+    list-style-type: none;
+    color: red;
+}
