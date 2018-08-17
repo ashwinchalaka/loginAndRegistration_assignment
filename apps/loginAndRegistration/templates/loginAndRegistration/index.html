@@ -6,9 +6,19 @@
     <link rel="stylesheet" href="{% static '/css/loginAndRegistration/style.css' %}">
 </head>
 <body>
-    <h1>Registration</h1>
+    <h1 class="registration_msgs">Registration</h1>
+    {% if messages %}
+    <ul class="messages registration_msgs">
+        {% for message in messages %}
+            {% if message.extra_tags == 'first_name' %}
+                <li>{{ message }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
     <form action="{%url 'processRegistration' %}" method="POST">
         {% csrf_token %}
+
         <label for="first_name">First Name:</label>
         <input type="text" name="first_name">
 
@@ -18,24 +28,36 @@
         <label for="email">Email:</label>
         <input type="text" name="email">
 
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+
+        <label for="conf_password">Confirm your Password:</label>
+        <input type="password" name="conf_password">
+
         <input type="submit" value="Register">
     </form>
 
-    <h1>Login</h1>
+    <h1 class="login_msgs">Login</h1>
+    {% if messages %}
+        <ul class="messages login_msgs">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <form action="{%url 'processLogin' %}" method="POST">
         {% csrf_token %}
+
+        
         <label for="email">Email:</label>
         <input name="email" type="text">
+
+        <label for="password">Password:</label>
+        <input type="password" name="password">
 
         <input type="submit" value="Login">
     </form>
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    
 </body>
 </html>

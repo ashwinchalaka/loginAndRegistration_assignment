@@ -13,6 +13,9 @@ ul {
     margin: 20px;
 }
 li {
-    list-style-type: none;
     color: red;
+}
+.registration_msgs, .login_msgs {
+    list-style-type: none;
+    display: inline-block;    
 }
